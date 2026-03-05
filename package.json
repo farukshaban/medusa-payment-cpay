@@ -1,0 +1,65 @@
+{
+  "name": "medusa-payment-cpay",
+  "version": "1.0.0",
+  "description": "cPay payment provider for MedusaJS v2 — card payments via cpay.com.mk",
+  "author": "Carboxmk",
+  "license": "MIT",
+  "keywords": [
+    "medusa",
+    "medusajs",
+    "medusa-payment",
+    "medusa-plugin",
+    "cpay",
+    "payment",
+    "payment-provider",
+    "north-macedonia",
+    "ecommerce"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carboxmk/medusa-payment-cpay"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./provider": {
+      "types": "./dist/provider.d.ts",
+      "default": "./dist/provider.js"
+    },
+    "./webhook": {
+      "types": "./dist/webhook.d.ts",
+      "default": "./dist/webhook.js"
+    },
+    "./checksum": {
+      "types": "./dist/checksum.d.ts",
+      "default": "./dist/checksum.js"
+    }
+  },
+  "files": [
+    "dist",
+    "storefront",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "test": "jest --passWithNoTests"
+  },
+  "peerDependencies": {
+    "@medusajs/framework": ">=2.0.0"
+  },
+  "devDependencies": {
+    "@medusajs/framework": "^2.0.0",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.3.0"
+  }
+}
