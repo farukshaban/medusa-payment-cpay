@@ -1,6 +1,6 @@
 {
   "name": "medusa-payment-cpay",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "cPay payment provider for MedusaJS v2 — card payments via cpay.com.mk",
   "author": "Carboxmk",
   "license": "MIT",

@@ -117,12 +117,12 @@ class CPayProviderService extends AbstractPaymentProvider<CPayOptions> {
 
     const details2 = this.generateDetails2()
 
-    // cPay AmountToPay = amount multiplied by 100
-    // Medusa stores MKD amounts in deni (1 MKD = 100 deni), which equals MKD * 100
-    // For MKD: Medusa amount in deni === cPay AmountToPay
-    // Ensure last two digits are 00 (cPay only accepts whole denar amounts)
+    // cPay requires AmountToPay = price in denar * 100 (last two digits always 00)
+    // Medusa passes the amount in the currency's smallest unit.
+    // For MKD (zero-decimal currency), Medusa passes the whole denar amount directly.
+    // e.g. 410 MKD → Medusa sends 410 → cPay needs 41000
     const numericAmount = Number(amount)
-    const amountToPay = String(Math.round(numericAmount / 100) * 100)
+    const amountToPay = String(numericAmount * 100)
 
     // Build callback URLs with identifiers for webhook lookup
     const resourceId = (context as any)?.resource_id ?? ""
